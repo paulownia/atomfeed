@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="recent.xsl" ?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ja">
+<id>http://paulownia.jp/</id>
+<title>paulownia.jp</title>
+<subtitle>atom test</subtitle>
+<link rel="alternate" type="text/html" href="http://web.paulownia.jp/"/>
+<author><name>paulownia</name></author>
+<icon>http://paulownia.jp/favicon.ico</icon>
+<logo>http://paulownia.jp/logo.png</logo>
+<updated>2007-01-10T13:28:27+09:00</updated>
+<generator>intiki generator</generator>
+<published>2006-01-10T00:28:27+09:00</published>
+<rights>nullpon</rights>
+<category term="ruby" />
+<category term="programming" scheme="http://127.0.0.1/programming" label="Programming" />
+<summary type="text">hogehoge</summary>
+<content type="xhtml"><html xmlns="http://www.w3.org/1999/xhtml">
+<p>ほげ？</p>
+</html>
+</content>
+<entry>
+	<id>http://localhost/text</id>
+	<title>テスト１</title>
+	<updated>2006-10-02T15:50:06+09:00</updated>
+	<published>2006-10-02T15:50:06+09:00</published>
+	<link rel="alternate" type="text/html" href="http://localhost/test1.html"/>
+	<summary/>
+	<content type="text">ほげほげ</content>
+</entry>
+<entry>
+<id>http://localhost/xhtml</id>
+	<title>テスト２</title>
+	<updated>2006-09-04T03:02:55+09:00</updated>
+	<published>2006-09-04T03:02:55+09:00</published>
+	<link rel="alternate" type="text/html" href="http://localhost/test2"/>
+	<summary/>
+	<content type="xhtml">
+		<html xmlns="http://http://www.w3.org/1999/xhtml">
+			<div id="body"><p>ほげほげ</p><p>ふがふが</p></div>
+		</html>
+	</content>
+</entry>
+<entry>
+<id>http://localhost/html</id>
+	<title>テスト３</title>
+	<updated>2006-09-04T03:02:55+09:00</updated>
+	<published>2006-09-04T03:02:55+09:00</published>
+	<link rel="alternate" type="text/html" href="http://localhost/test3"/>
+	<summary/>
+	<content type="html">
+		&lt;div id=&quot;body&quot;&gt;&lt;p&gt;ほげほげ&lt;/p&gt;&lt;p&gt;ふがふが&lt;/p&gt;&lt;/div&gt;
+	</content>
+</entry>
+</feed>

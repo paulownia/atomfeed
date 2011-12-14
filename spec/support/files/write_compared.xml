@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns='http://www.w3.org/2005/Atom'>
+<id>hoge</id>
+<title>タイトル</title>
+<content type='text'>ほげふがぷー</content>
+<updated>2009-04-01T02:37:10+09:00</updated>
+<published>2008-12-31T18:04:10+09:00</published>
+<entry>
+<id>hoge1</id>
+<title>エントリ１</title>
+<content type='text'>エントリ１ほげふがぷー</content>
+</entry>
+<entry>
+<id>hoge2</id>
+<title>エントリ２</title>
+<content type='text'>エントリ２ほげふがぷー</content>
+</entry>
+</feed>
