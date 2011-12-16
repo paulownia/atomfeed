@@ -1,7 +1,5 @@
 module Atom
-  class Feed
-    NAMESPACE = 'http://www.w3.org/2005/Atom'
-  end
+  NAMESPACE = 'http://www.w3.org/2005/Atom'
 end
 
 require 'rexml/document'
@@ -16,9 +14,22 @@ module Atom
   class Feed
     include Atom::Meta
     
-    XML = ("<?xml version='1.0' encoding='UTF-8'?><feed xmlns='" + Atom::Feed::NAMESPACE + "'/>").freeze
+    XML = ("<?xml version='1.0' encoding='UTF-8'?><feed xmlns='" + Atom::NAMESPACE + "'/>").freeze
 
     attr_reader :entries
+
+
+    def self.create(hash = nil)
+      feed = Atom::Feed.new
+      if block_given? 
+        yield feed
+      elsif not hash.nil?
+        hash.each do |key, value| 
+          feed.__send__(key.to_s + "=", value)
+        end
+      end 
+      feed
+    end
 
     def initialize(io_or_string = nil)
       if io_or_string
@@ -66,9 +77,9 @@ module Atom
         raise ArgumentError.new("An argument is not atom document.")
       end
 
-      if document.root.namespace != Atom::Feed::NAMESPACE
+      if document.root.namespace != Atom::NAMESPACE
         is_atom = document.root.namespaces.any? { |ns|
-          ns == Atom::Feed::NAMESPACE
+          ns == Atom::NAMESPACE
         }
         
         if not is_atom

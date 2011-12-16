@@ -2,6 +2,54 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 require 'rexml/document'
 
+describe Atom::Feed, "createのブロックで各種プロパティをセットしたとき" do
+  before do
+    @now = Time.now
+    @feed = Atom::Feed.create do |feed|
+      feed.id = "homura"
+      feed.title = "もう誰にも頼らない"
+      feed.published = @now
+      feed.entries.add do |entry| 
+        entry.id = ""
+      end
+    end
+  end
+
+  it "ブロックでセットしたidが入っている" do
+    @feed.id.should == "homura"
+  end
+  it "ブロックでセットしたtileが入っている" do
+    @feed.title.should == "もう誰にも頼らない"
+  end
+  it "ブロックでセットしたpublishedが入っている" do
+    @feed.published.should == @now
+  end
+  it "ブロックで追加したentryがある" do
+    @feed.entries.size.should == 1
+  end
+end
+
+describe Atom::Feed, "createの引数にハッシュでプロパティ値を渡した時、" do
+  before do
+    @now = Time.now
+    @feed = Atom::Feed.create(
+      :id => "madoka", 
+      :title => "そんなの絶対おかしいよ",
+      :published => @now
+    )
+  end
+  it "ブロックでセットしたidが入っている" do
+    @feed.id.should == "madoka"
+  end
+  it "ブロックでセットしたtileが入っている" do
+    @feed.title.should == "そんなの絶対おかしいよ"
+  end
+  it "ブロックでセットしたpublishedが入っている" do
+    @feed.published.should == @now
+  end
+end
+
+
 describe Atom::Feed, "をnewした直後に、" do
   before do
     @feed = Atom::Feed.new

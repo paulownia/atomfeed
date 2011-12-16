@@ -9,6 +9,9 @@ describe Atom::Entries, "のインスタンスは" do
   it "Enumerableである。" do
     @entries.should be_kind_of Enumerable 
   end
+  it "Atom::Elementsである。" do
+    @entries.should be_kind_of Atom::Elements
+  end
 
   it "addメソッドにブロックを渡して新しいAtom::Entryを追加できる" do
     @entries.add { |entry|
@@ -19,14 +22,6 @@ describe Atom::Entries, "のインスタンスは" do
     }
     @entries.should have(1).items
   end
-end
-
-describe Atom::Entries, "はAtom::Elementsを継承している" do
-  before do
-    @entries = Atom::Entries.new
-  end
-
-
 end
 
 describe Atom::Entries, "をnewした直後、" do

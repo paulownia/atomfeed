@@ -5,7 +5,7 @@ module Atom
   class Entry
     include Atom::Meta
 
-    XML = ("<?xml version='1.0' encoding='UTF-8'?><entry xmlns='" + Atom::Feed::NAMESPACE + "'/>").freeze
+    XML = ("<?xml version='1.0' encoding='UTF-8'?><entry xmlns='" + Atom::NAMESPACE + "'/>").freeze
 
     def initialize(element = nil)
       if element
