@@ -1,6 +1,7 @@
 = atomfeed
 
-Description goes here.
+Atom feed parser and generator for ruby.
+
 
 == Contributing to atomfeed
  

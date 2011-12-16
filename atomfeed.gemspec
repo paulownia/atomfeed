@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{nil paulownia}]
-  s.date = %q{2011-12-14}
+  s.date = %q{2011-12-16}
   s.description = %q{parsing and generating atom feed}
   s.email = %q{hisary+dev@gmail.com}
   s.extra_rdoc_files = [
@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "lib/atom.rb",
+    "atomfeed.gemspec",
     "lib/atom/category.rb",
     "lib/atom/date.rb",
     "lib/atom/elements.rb",
