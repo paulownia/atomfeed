@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe Atom::Entries, "のインスタンスは" do
@@ -7,7 +7,7 @@ describe Atom::Entries, "のインスタンスは" do
   end
 
   it "Enumerableである。" do
-    @entries.should be_kind_of Enumerable 
+    @entries.should be_kind_of Enumerable
   end
   it "Atom::Elementsである。" do
     @entries.should be_kind_of Atom::Elements
@@ -20,7 +20,7 @@ describe Atom::Entries, "のインスタンスは" do
       entry.title = "fuga"
       entry.links.add(:href => "http://hogehoge.com/")
     }
-    @entries.should have(1).items
+    expect(@entries.size).to eq(1)
   end
 end
 

@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 require File.dirname(__FILE__) + '/spec_helper.rb'
 require 'rexml/document'
 
@@ -9,7 +9,7 @@ describe Atom::Feed, "createのブロックで各種プロパティをセット�
       feed.id = "homura"
       feed.title = "もう誰にも頼らない"
       feed.published = @now
-      feed.entries.add do |entry| 
+      feed.entries.add do |entry|
         entry.id = ""
       end
     end
@@ -33,7 +33,7 @@ describe Atom::Feed, "createの引数にハッシュでプロパティ値を渡�
   before do
     @now = Time.now
     @feed = Atom::Feed.create(
-      :id => "madoka", 
+      :id => "madoka",
       :title => "そんなの絶対おかしいよ",
       :published => @now
     )
@@ -60,7 +60,7 @@ describe Atom::Feed, "をnewした直後に、" do
   end
 
   it "stringifyで、feed空要素がルートノードのXML文字列を生成" do
-    @feed.stringify.should == 
+    @feed.stringify.should ==
       "<?xml version='1.0' encoding='UTF-8'?>" +
       "<feed xmlns='http://www.w3.org/2005/Atom'/>"
   end
@@ -80,7 +80,7 @@ describe Atom::Feed, "のloadメソッドでファイルがなかった場合は
   before do
     @loading_no_file = lambda{ Atom::Feed.load( "sonna_file_neeeeyo.xml" ) }
   end
-  
+
   it "例外が投げられる" do
     @loading_no_file.should raise_error Errno::ENOENT
   end
@@ -99,7 +99,7 @@ describe Atom::Feed, "のloadメソッドでXMLファイルをロードした場
   it "updatedの日付が読み込まれている" do
     @atom.updated.strftime("%Y/%m/%d %H:%M:%S").should == "2007/01/10 13:28:27"
   end
-  
+
   it "publishedの日付が読み込まれている" do
     @atom.published.strftime("%Y/%m/%d %H:%M:%S").should == "2006/01/10 00:28:27"
   end
@@ -107,7 +107,7 @@ describe Atom::Feed, "のloadメソッドでXMLファイルをロードした場
   it "icon要素が読み込まれている" do
     @atom.icon.should == "http://paulownia.jp/favicon.ico"
   end
-  
+
   it "logo要素が読み込まれている" do
     @atom.logo.should == "http://paulownia.jp/logo.png"
   end
@@ -115,7 +115,7 @@ describe Atom::Feed, "のloadメソッドでXMLファイルをロードした場
   it "rights要素が読み込まれている" do
     @atom.rights.should == "nullpon"
   end
-  
+
   it "generator要素が読み込まれている" do
     @atom.generator.should == "intiki generator"
   end
@@ -133,7 +133,7 @@ describe Atom::Feed, "のloadメソッドでXMLファイルをロードした場
     @atom.summary.type.should == "text"
     @atom.summary.text.should == "hogehoge"
   end
-  
+
   it "content要素が読み込まれている" do
     @atom.content.should_not be_nil
     @atom.content.type.should == "xhtml"
@@ -142,27 +142,27 @@ describe Atom::Feed, "のloadメソッドでXMLファイルをロードした場
 
 
   it "author要素の内容が読み込まれている。" do
-  	@atom.authors.should have(1).items
+    expect(@atom.authors.size).to eq(1)
   	@atom.authors.length.should == 1
     @atom.authors[0].name.should == "paulownia"
   end
-  
+
   it "link要素が読み込まれている" do
     @atom.links.size.should == 1
     @atom.links[0].rel.should == "alternate"
   end
-  
+
   it "2つのcategory要素が読み込まれている" do
     @atom.categories.size.should == 2
     @atom.categories[0].term.should == "ruby"
     @atom.categories[1].scheme.should == "http://127.0.0.1/programming"
   end
-  
+
   it "3つのentry要素が読み込まれている" do
     @atom.entries.length.should == 3
     @atom.entries[0].title.should == "テスト１"
     @atom.entries[1].title.should == "テスト２"
-    @atom.entries[2].title.should == "テスト３"  
+    @atom.entries[2].title.should == "テスト３"
   end
 end
 
@@ -170,16 +170,16 @@ describe Atom::Feed, "のpublishedプロパティは、" do
   before do
     @atom = Atom::Feed.new
   end
-  
+
   it "最初はnilで、" do
     @atom.published.should be_nil
   end
-  
+
   it "Timeインスタンスをセットできて、" do
     @atom.published = Time.local(2008,10,3,12,15,30)
     @atom.published.strftime("%Y/%m/%d %H:%M:%S").should == "2008/10/03 12:15:30"
   end
-  
+
   it "iso8601の日付文字列もセットできる。" do
     @atom.published = "2009-03-31T10:12:00+09:00"
     @atom.published.strftime("%Y/%m/%d %H:%M:%S").should == "2009/03/31 10:12:00"
@@ -198,12 +198,12 @@ describe Atom::Feed, "に色々プロパティを設定して" do
     @feed.updated = Time.local(2009, 4, 1, 2, 37, 10)
     @feed.published = Time.local(2008, 12, 31, 18, 4, 10)
     @feed.content.text = "ほげふがぷー"
-    @feed.entries.add { |entry| 
+    @feed.entries.add { |entry|
       entry.id = "hoge1"
       entry.title = "エントリ１"
       entry.content.text = "エントリ１ほげふがぷー"
     }
-    @feed.entries.add { |entry| 
+    @feed.entries.add { |entry|
       entry.id = "hoge2"
       entry.title = "エントリ２"
       entry.content.text = "エントリ２ほげふがぷー"
